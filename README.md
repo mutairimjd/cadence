@@ -1,24 +1,12 @@
-# README
+# AAA-M
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About the App.
+AAA-M is a wed application music streaming inspired by Spotify. Built by Ruby on Rails.
 
-Things you may want to cover:
+## App features.
+* Account creation, log in and guest log in.
+* Music playing in background while browsing.
+* Add and upload music to playlist.
 
-* Ruby version
+## Design and Style.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
