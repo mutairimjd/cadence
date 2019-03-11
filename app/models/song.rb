@@ -1,5 +1,5 @@
 class Song < ApplicationRecord
-   
-    validates :title, :artist, :catogries, presence: true
+   belongs_to :user
+   validates :title, :artist, :catogries, :url, presence: true
   
 end

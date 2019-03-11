@@ -1,6 +1,7 @@
 class SongsController < ApplicationController
-  before_action :set_song, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!,except: [:index, :show]
+  before_action :set_song, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /songs
   # GET /songs.json
@@ -25,7 +26,11 @@ class SongsController < ApplicationController
   # POST /songs
   # POST /songs.json
   def create
-    @song = Song.new(song_params)
+    # old way
+    # @song = Song.new(song_params) 
+    # @song.user_id = current_user.id
+    # new  way
+    @song = current_user.songs.build(song_params)
 
     respond_to do |format|
       if @song.save
