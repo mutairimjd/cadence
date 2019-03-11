@@ -1,6 +1,7 @@
 class SongsController < ApplicationController
   before_action :authenticate_user!,except: [:index, :show]
   before_action :set_song, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :update, :destroy]
 
   # GET /songs
   # GET /songs.json
@@ -59,17 +60,25 @@ class SongsController < ApplicationController
   # DELETE /songs/1
   # DELETE /songs/1.json
   def destroy
-    @song.destroy
-    respond_to do |format|
+   
+      @song.destroy
+      respond_to do |format|
       format.html { redirect_to songs_url, notice: 'Song was successfully destroyed.' }
       format.json { head :no_content }
-    end
+      end
+    
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_song
       @song = Song.find(params[:id])
+    end
+
+    def check_user
+       if @song.user_id != current_user.id
+        redirect_to songs_url, notice: 'you are not aallowed to do this '
+       end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
