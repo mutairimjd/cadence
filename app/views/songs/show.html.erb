@@ -12,7 +12,7 @@
 
 <p>
   <strong>catogries:</strong>
-  <%= @song.catogries %>
+  <%= Catogrie.find(@song.catogrie_id).name %>
 </p>
 
 <p>

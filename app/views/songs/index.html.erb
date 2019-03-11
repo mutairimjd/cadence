@@ -18,7 +18,7 @@
       <tr>
         <td><%= song.title %></td>
         <td><%= song.artist %></td>
-        <td><%= song.catogries %></td>
+        <td><%= Catogrie.find(song.catogrie_id).name %></td>
         <td><%= song.url %></td>
         <td><%= link_to 'Show', song %></td>
         <td><%= link_to 'Edit', edit_song_path(song) %></td>

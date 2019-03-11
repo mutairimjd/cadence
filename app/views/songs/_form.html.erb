@@ -22,8 +22,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :catogries %>
-    <%= form.text_field :catogries %>
+    <p>catogrie<p>
+    <%= form.collection_select :catogrie_id, Catogrie.all, :id, :name %>
   </div>
 
   <div class="field">
