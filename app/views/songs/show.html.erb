@@ -17,7 +17,7 @@
 
 <p>
   <strong>Url:</strong>
-  <%= @song.url %>
+  <audio controls src="<%= @song.url %>"></audio>
 </p>
 
 <%= link_to 'Edit', edit_song_path(@song) %> |

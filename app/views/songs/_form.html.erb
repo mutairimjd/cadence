@@ -28,7 +28,13 @@
 
   <div class="field">
     <%= form.label :url %>
-    <%= form.text_field :url%>
+    <%= form.file_field :url %>
+    <% if form.object.url? %>
+    <%= audio_tag form.object.url %>
+    <%= form.label :remove_audio %>
+    <%= form.check_box :remove_audio %> 
+  <% end %>
+  
   </div>
 
   <div class="actions">
