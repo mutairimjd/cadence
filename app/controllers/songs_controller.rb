@@ -77,14 +77,12 @@ class SongsController < ApplicationController
 
     def check_user
        if @song.user_id != current_user.id
-        redirect_to songs_url, notice: 'you are not aallowed to do this '
+        redirect_to songs_url, notice: 'you are not allowed to do this '
        end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      puts "\n\n\n\n\n ******" 
-      puts params[:song]
       params.require(:song).permit(:title, :artist, :catogrie_id, :url)
     end
 end
