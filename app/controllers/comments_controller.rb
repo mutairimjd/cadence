@@ -2,6 +2,11 @@ class CommentsController < ApplicationController
 
     before_action :authenticate_user!, only: [:create, :destroy]
 
+
+    def index
+      @comments = Comment.all
+    end
+
     def create
         @song = Song.find(params[:song_id])
         @comment = @song.comments.build(comment_params)

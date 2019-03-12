@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% Catogrie.all.each do |catogry| %>
+  <%= link_to catogrie_path(catogry) do%> <%= catogry.name %> <%end%>
+<% end %>
+
 <h1>Songs</h1>
 
 <table>
@@ -31,6 +35,9 @@
         <% end %> 
         </td>
         <td><%= Like.where({song_id: song.id}).count%></td>
+
+        
+        <td><%= Comment.where({song_id: song.id}).count%></td>
 
         <td><%= link_to 'Show', song %></td>
         <td><%= link_to 'Edit', edit_song_path(song) %></td>
