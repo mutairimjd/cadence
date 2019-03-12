@@ -11,3 +11,11 @@
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
+
+
+$(document).ready(function() {
+  $('#media').carousel({
+    pause: true,
+    interval: false,
+  });
+});

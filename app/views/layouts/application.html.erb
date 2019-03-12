@@ -1,26 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AAAM</title>
+    <title>Cadence</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
+ <!-- Navigation Bar -->
+  <div>
+   <nav class="navbar navbar-dark bg-dark">
+     <a class="navbar-brand" href="#">
+     </a>
+     <!-- Log in Sign Up -->
+   <% if user_signed_in? %>
+  Welcome, <%= current_user.email %>
+   <%= link_to "logout", destroy_user_session_path, method: :delete %>
+   <% else %>
+   <div class="login">
+    <%= link_to "Log in", new_user_session_path %>
+   </div> 
+   <%= link_to "Sign Up", new_user_registration_path %>
+   <% end %>
+   </nav>
+   <!-- Logo -->
+  <a href="http://localhost:3000/">
+  <img src="https://i.imgur.com/drrCDV2.png" width="225" class="logo">
+  </a>
+  <div class="container">
   <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
- 
-  <% if user_signed_in? %>
-  Welcome, <%= current_user.email %> |
-  <%= link_to "logout", destroy_user_session_path, method: :delete %>
-  <% else %>
-  <%= link_to "login", new_user_session_path %>
-  <%= link_to "sign Up", new_user_registration_path %>
-  <% end %>
+  <!-- Search form -->
+<div class="md-form mt-0">
+  <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+</div>
 
     <%= yield %>
   </body>
+  </div>
 </html>

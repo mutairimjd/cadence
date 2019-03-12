@@ -3,6 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
+# Bootstrap
+gem 'bootstrap', '~> 4.3.1'
+
+gem 'jquery-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
@@ -13,6 +18,7 @@ gem 'devise', '~> 4.6', '>= 4.6.1'
 gem 'carrierwave', '~> 0.10.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'autoprefixer-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes

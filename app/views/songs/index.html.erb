@@ -1,3 +1,114 @@
+<!-- Music Slider -->
+<section class="slider_sec">
+        <div class="container-fluid fix-cont">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="slider_in">
+                        <h3>FEATURES MUSIC</h3>
+                        <div id="owl-carousel" class="owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="img_wrp">
+                                    <div class="img_text">
+                                        <h5>Rock</h5>
+                                    </div>
+                                    <img src="https://i.pinimg.com/originals/cb/90/98/cb9098c9be7bdf4864db889f935284b7.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="img_wrp">
+                                    <div class="img_text">
+                                        <h5>Pop</h5>
+
+                                    </div>
+                                    <img src="https://photos.gurushots.com/unsafe/0x500/2dec5053865d3710310bca306d17720a/3_f13fa13e56b83ba62506ef609213dd04.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="img_wrp">
+                                    <div class="img_text">
+                                        <h5>Hip-Hop</h5>
+                                    </div>
+                                    <img src="https://i.pinimg.com/originals/fb/5b/6c/fb5b6cf2ca79123f14d56fc50f7c005f.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="img_wrp">
+                                    <div class="img_text">
+                                        <h5>Classic</h5>
+                                    </div>
+                                    <img src="http://s3-eu-central-1.amazonaws.com/chasingthelightart/wp-content/uploads/20190212150457/Jo-Quail-181208-10.jpg" alt="">
+                                </div>
+                            </div>
+                             <div class="item">
+                                <div class="img_wrp">
+                                    <div class="img_text">
+                                        <h5>Techno</h5>
+                                        
+                                    </div>
+                                    <img src="https://i0.wp.com/www.lindiependente.it/wp-content/uploads/2017/06/Preoccupations-4.jpg" alt="">
+                                </div>
+                            </div>
+                             <div class="item">
+                                <div class="img_wrp">
+                                    <div class="img_text">
+                                        <h5>EDM</h5>
+                                        
+                                    </div>
+                                    <img src="https://www.edmdroid.com/wp-content/gallery/armada-night/img_0047.jpg" alt="">
+                                </div>
+                            </div>
+                             <div class="item">
+                                <div class="img_wrp">
+                                    <div class="img_text">
+                                        <h5>Rap</h5>
+                                        
+                                    </div>
+                                    <img src="https://amherstwire.com/wp-content/uploads/2019/03/2_Chainz_at_Pretty_Girls_Like_Trap_Music_Tour-601x900.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- // slder sec -->
+    
+    <script>
+      //Jquery auto height
+     
+    $(document).ready(function(){
+         $('#owl-carousel').owlCarousel({
+            loop: true,
+            margin: 50,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true
+                },
+                600: {
+                    items: 2,
+                    nav: false
+                },
+                768: {
+                    items: 3,
+                    nav: false
+                },
+                1000: {
+                    items: 3,
+                    nav: true,
+                    loop: true
+                }
+            }
+        });
+    });
+        
+    </script>
+
+    
 <p id="notice"><%= notice %></p>
 
 <h1>Songs</h1>
