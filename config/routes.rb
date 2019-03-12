@@ -5,5 +5,12 @@ Rails.application.routes.draw do
   # root 'songs#index'
   get "/pages/:page" => "pages#show"
   root "pages#show", page: "landing"
+  resources :songs do
+    resources :comments
+  end
+  root 'songs#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
+
 end
