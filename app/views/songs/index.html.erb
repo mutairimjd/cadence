@@ -19,9 +19,28 @@
         <td><%= song.title %></td>
         <td><%= song.artist %></td>
         <td><%= Catogrie.find(song.catogrie_id).name %></td>
+
+        <% if current_user %>
+        <td> 
+         <% like = current_user.likes.where({song_id: song.id})[0]%>
+        <% if like %>
+          <% id = like.id %>
+          <%= link_to song_like_path(song,id),  method: :delete  do%> unlike <%end%>
+        <% else %>
+          <%= link_to song_likes_path(song),  method: :post  do%>Like <%end%>
+        <% end %> 
+        </td>
+        <td><%= Like.where({song_id: song.id}).count%></td>
+
         <td><%= link_to 'Show', song %></td>
         <td><%= link_to 'Edit', edit_song_path(song) %></td>
         <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <% else %>
+        <td><%= link_to 'Show', song %></td>
+         <% end %> 
+
+         
       </tr>
     <% end %>
   </tbody>

@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2019_03_12_092558) do
   create_table "likes", force: :cascade do |t|
     t.bigint "song_id"
     t.bigint "user_id"
+    t.bigint "user_id"
+    t.bigint "song_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["song_id"], name: "index_likes_on_song_id"
@@ -72,13 +74,12 @@ ActiveRecord::Schema.define(version: 2019_03_12_092558) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-<<<<<<< HEAD
   add_foreign_key "likes", "songs"
   add_foreign_key "likes", "users"
-=======
   add_foreign_key "comments", "songs"
   add_foreign_key "comments", "users"
->>>>>>> comments feature Done
+  add_foreign_key "likes", "songs"
+  add_foreign_key "likes", "users"
   add_foreign_key "songs", "catogries", column: "catogrie_id"
   add_foreign_key "songs", "users"
 end
