@@ -15,11 +15,18 @@
     <%= Catogrie.find(@song.catogrie_id).name %>
   </p>
 
-  <p>
-    <strong>Url:</strong>
-    <audio controls src="<%= @song.url %>"></audio>
-  </p>
+<p>
+  <strong></strong>
+  <audio controls src="<%= @song.url %>"></audio>
+</p>
 
-  <%= link_to 'Edit', edit_song_path(@song) %> |
-  <%= link_to 'Back', songs_path %>
 
+
+<p>
+  <strong></strong>
+  <image controls src="<%= @song.image.url %>"</image>
+</p>
+ 
+
+<%= link_to 'Edit', edit_song_path(@song) %> |
+<%= link_to 'Back', songs_path %>
