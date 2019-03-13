@@ -21,16 +21,6 @@ ActiveRecord::Schema.define(version: 2019_03_12_092558) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.bigint "song_id"
-    t.bigint "user_id"
-    t.bigint "user_id"
-    t.bigint "song_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["song_id"], name: "index_likes_on_song_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
-
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
     t.text "body"
@@ -42,6 +32,15 @@ ActiveRecord::Schema.define(version: 2019_03_12_092558) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "song_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["song_id"], name: "index_likes_on_song_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "songs", force: :cascade do |t|
     t.string "title"
     t.string "artist"
@@ -50,7 +49,6 @@ ActiveRecord::Schema.define(version: 2019_03_12_092558) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "catogrie_id"
-    t.string "Image_url"
     t.string "image"
     t.index ["catogrie_id"], name: "index_songs_on_catogrie_id"
     t.index ["user_id"], name: "index_songs_on_user_id"
@@ -74,8 +72,6 @@ ActiveRecord::Schema.define(version: 2019_03_12_092558) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "likes", "songs"
-  add_foreign_key "likes", "users"
   add_foreign_key "comments", "songs"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "songs"

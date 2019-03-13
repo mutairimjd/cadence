@@ -28,70 +28,46 @@
     <!-- // slder sec -->
     <p id="notice"><%= notice %></p>
 
-    <div class="jumbotron">
+<div class="jumbotron majd">
   
       <strong><%= link_to 'My Songs', user_songs_path %></strong>
       <strong><%= link_to 'My favorite Songs', user_fav_songs_path %></strong>
+      <h1>Most Recent Uploaded Songs</h1>
       
-    
-      <h1>Songs</h1>
-      
-      <table>
-        <thead>
-          <tr>
-            <th>Img</th>
-            <th>Artist</th>
-            <th>Song Title</th>
-            <th>Song Catogries</th>
-            <th>Audio</th>
-            <th>Number of Comments</th>
-            <th>buttnCommint</th>
-            <th>Number of Likes</th>
-            <th>buttnLike</th>
-            <th>Show</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-      
-        <tbody>
           <% @songs.each do |song| %>
-            <tr>
-          
-            <td>image</td>
-            <td><%= song.artist %></td>
-            <td><%= song.title %></td>
-            <td><%= Catogrie.find(song.catogrie_id).name %></td>
-            <td><audio controls src="<%=song.url %>"></audio></td>   
-            <td><%= Comment.where({song_id: song.id}).count%></td> 
-            <td><%= link_to 'Commint', song %></td>    
+
+            <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page" style="color: black;" >
+            
+            <span><%= song.artist %> - <%= song.title %></span>
+            <p><%= Catogrie.find(song.catogrie_id).name %></p>
+            <p><audio controls src="<%=song.url %>"></audio></p>   
+            <span><%= Comment.where({song_id: song.id}).count%></span> 
+            <span><%= link_to 'Commint', song %></span>  
             <% if current_user %>
-            <td><%= Like.where({song_id: song.id}).count%></td>
-            <td> 
+            <span><%= Like.where({song_id: song.id}).count%></span>
+            <span> 
             <% like = current_user.likes.where({song_id: song.id})[0]%>
             <% if like %>
               <% id = like.id %>
               <%= link_to song_like_path(song,id),  method: :delete  do%> unlike <%end%>
             <% else %>
-              <%= link_to song_likes_path(song),  method: :post  do%>Like <%end%>
+              <%= link_to song_likes_path(song),  method: :post  do%> Like <%end%>
             <% end %> 
-            </td>
+            </span>
             <% else %>
-            <td><%= Like.where({song_id: song.id}).count%></td>
-            <td><%= link_to 'Like', new_user_session_path %></td>  
+            <span><%= Like.where({song_id: song.id}).count%></span>
+            <span><%= link_to 'Like', new_user_session_path %></span>  
             <% end %> 
-            <td><%= link_to 'Show', song %></td>
-      
-            </tr>
+            <span><%= link_to 'Show', song %></span>
+            </li>
+            </ol>
+            </nav>
           <% end %>
-        </tbody>
-      </table>
-      
       <br>
-      
       <%= link_to 'New Song', new_song_path %>
-  
   </div>
-
 
 
 

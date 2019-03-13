@@ -5,7 +5,7 @@ class Song < ApplicationRecord
   length: { minimum: 5 } 
    belongs_to :catogrie
    belongs_to :user
-   has_many :likes
+   has_many :likes, dependent: :destroy
    validates :title, :artist, :catogrie, :url, presence: true
     
     validate :image_size_validation
@@ -14,7 +14,3 @@ class Song < ApplicationRecord
 end
 
 
-private
-  def image_size_validation
-    errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
-  end
