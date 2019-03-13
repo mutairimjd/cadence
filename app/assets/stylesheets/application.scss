@@ -41,10 +41,10 @@
 .slider_in			{padding: 65px 40px 80px 40px;}
 .slider_sec h3		{margin:0px 0 45px 0; padding:10px 0 0 0; line-height:1; font-size:40px; color:#fff; font-weight:600;}
 .slider_sec h4		{margin:0px; padding:0px 0 0 0; line-height:1; font-size:40px; color:#fff; font-weight:300;}
-.img_wrp			{line-height:0px; background:#fff; padding:5px;}
+.img_wrp			{line-height:0px;}
 .img_wrp img		{transition: all 0.5s ease;}
-.owl-prev			{position: absolute;z-index: 10;display: inline-block;  left: -104px; cursor: pointer; font-size: 0.1px; top: 37%; width: 95px; height: 140px;  background: url(https://goo.gl/kLnzFJ)no-repeat;}
-.owl-next			{position: absolute; z-index: 10; display: inline-block; right: -51px;  cursor: pointer;font-size: 0.1px;  top: 37%; width: 45px;  height: 140px;  background: url(https://goo.gl/ipLMit)no-repeat center;}
+.owl-prev			{position: absolute;z-index: 10;display: inline-block;  left: -104px; cursor: pointer; font-size: 0.1px; top: 37%; width: 95px; height: 140px;  background: url(http://three-h.com/images/button-images/previous-button-white-thin.png)no-repeat;}
+.owl-next			{position: absolute; z-index: 10; display: inline-block; right: -51px;  cursor: pointer;font-size: 0.1px;  top: 37%; width: 45px;  height: 140px;  background: url(https://i.imgur.com/JpuVYMj.png)no-repeat center;}
 .img_text			{position:absolute; left:0; bottom:20px; opacity:0; z-index:10; transition: all 0.5s ease; width:100%; font-family: 'Raleway', sans-serif;}
 .img_text h5		{font-size:23px;  font-weight:600; color:#fff; text-transform:uppercase; line-height:1; padding:0 0 4px 0px;}
 .img_text p			{font-size:12px;  padding:0px 10px; font-weight:500; margin:0px; color:#fff; line-height:20px; font-family: 'Raleway', sans-serif; text-transform: capitalize;}
@@ -274,5 +274,34 @@
 .owl-carousel .owl-video-frame {
 	position: relative;
 	z-index: 1
+}
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css);
+
+.hm-gradient {
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+.darken-grey-text {
+    color: #2E2E2E;
+}
+
+footer.page-footer {
+	color: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.row1 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 290px;
+	margin-left: -15px;
 }
 
