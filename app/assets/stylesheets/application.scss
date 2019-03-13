@@ -17,7 +17,25 @@
  body {
     background: url("https://wallpapersite.com/images/wallpapers/grid-lines-3840x2160-blue-lines-dark-4k-8782.jpg");
     background-repeat: no-repeat;
-    background-size: auto;
+	background-size: auto;
+	height: 100%;
+	margin: 0;
+	color: #fff
+
+ }
+
+
+
+
+  .footer,
+  .push {
+	height: 50px;
+  }
+  
+ .main-container{
+	min-height: 72vh !important;
+	height: 72vh 
+	// margin: 0 auto -50px;
  }
 
  .login {
@@ -37,7 +55,7 @@
      height: 24px;
  }
  
-.slider_sec		    {text-align:center; color:#fff; font-family: 'Raleway', sans-serif; height:1000px;}
+.slider_sec		    {text-align:center; color:#fff; font-family: 'Raleway', sans-serif; height:800px;}
 .slider_in			{padding: 65px 40px 80px 40px;}
 .slider_sec h3		{margin:0px 0 45px 0; padding:10px 0 0 0; line-height:1; font-size:40px; color:#fff; font-weight:600;}
 .slider_sec h4		{margin:0px; padding:0px 0 0 0; line-height:1; font-size:40px; color:#fff; font-weight:300;}
@@ -303,4 +321,5 @@ html {
     flex-wrap: wrap;
     margin-right: 290px;
 	margin-left: -15px;
+	
 }

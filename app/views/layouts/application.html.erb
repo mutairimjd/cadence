@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
     <title>Cadence</title>
     <%= csrf_meta_tags %>
@@ -9,117 +12,43 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     
   </head>
- <!-- Navigation Bar -->
-  <div style="color: white;">
-   <nav class="navbar navbar-dark bg-dark">
-     <a class="navbar-brand" href="#">
-     </a>
-     <!-- Log in Sign Up -->
-   <% if user_signed_in? %>
-  Welcome, <%= current_user.email %>
-   <%= link_to "logout", destroy_user_session_path, method: :delete %>
-   <% else %>
-   <div class="login">
-    <%= link_to "Log in", new_user_session_path %>
-   </div> 
-   <%= link_to "Sign Up", new_user_registration_path %>
-   <% end %>
-   </nav>
-   <!-- Logo -->
-  <a href="http://localhost:3000/pages/home#">
-  <img src="https://i.imgur.com/drrCDV2.png" width="225" class="logo">
-  </a>
-  <div class="container">
   <body>
-  
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-dark bg-dark">
 
+      <% if user_signed_in? %>
+        Welcome, <%= current_user.email %>
+        <%= link_to "logout", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <div class="login">
+          <%= link_to "Log in", new_user_session_path %>
+        </div> 
+        <%= link_to "Sign Up", new_user_registration_path %>
+      <% end %>
+    </nav>
 
+    <a href="http://localhost:3000/pages/home#">
+      <img src="https://i.imgur.com/drrCDV2.png" width="225" class="logo">
+    </a>
+    <div class="container main-container">
+ 
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <%= yield %>
+     
+    </div>
+
+      <div class="content">
+        <h1>Sticky Footer with Negative Margin 1</h1>
+          <p><button id="add">Add Content</button></p>
+        <div class="push"></div>
+      </div>
+    
+    <footer class="footer">
+      Footer 
+    </footer>
     <%= javascript_include_tag 'application' %>
   </body>
-  </div>
-  
-  <!-- Footer -->
-<footer class="page-footer font-small stylish-color-dark pt-4">
-
-    <!-- Footer Links -->
-    <div class="container text-center text-md-left">
-
-      <!-- Grid row -->
-      <div class="row1">
-
-        <!-- Grid column -->
-        <div class="col-md-4 mx-auto">
-
-        </div>
-        <!-- Grid column -->
-
-        <hr class="clearfix w-100 d-md-none">
-
-        <!-- Grid column -->
-        <div class="col-md-2 mx-auto">
-
-          <!-- Links -->
-          <h6 class="font-weight-bold text-uppercase mt-3 mb-4">About Us</h6>
-
-        </div>
-        <!-- Grid column -->
-
-        <hr class="clearfix w-100 d-md-none">
-
-        <!-- Grid column -->
-        <div class="col-md-2 mx-auto">
-
-          <!-- Links -->
-          <h6 class="font-weight-bold text-uppercase mt-3 mb-4">Contact Us</h6>
-
-        </div>
-        <!-- Grid column -->
-
-        <hr class="clearfix w-100 d-md-none">
-
-        <!-- Grid column -->
-        <div class="col-md-2 mx-auto">
-
-          <!-- Links -->
-          <h6 class="font-weight-bold text-uppercase mt-3 mb-4">FAQs</h6>
-
-        </div>
-        <!-- Grid column -->
-
-      </div>
-
-    </div>
-
-    <!-- Social buttons -->
-    <ul class="list-unstyled list-inline text-center">
-      <li class="list-inline-item">
-        <a class="btn-floating btn-fb mx-1">
-          <img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_black-512.png" width = "30" height = "30" />
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-tw mx-1">
-          <img src="https://www.rootshummus.com/wp-content/uploads/2016/07/twitter-circle-black.png" width = "30" height = "30" />
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-gplus mx-1">
-        <img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/instagram_circle_black-512.png" width = "30" height = "30" />
-        </a>
-      </li>
-    </ul>
-    <!-- Social buttons -->
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2019
-      <a href="#"> Cadence</a>
-    </div>
-    <!-- Copyright -->
-
- </footer>
- <!-- Footer -->
 </html>
