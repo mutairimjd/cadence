@@ -7,7 +7,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    
   </head>
  <!-- Navigation Bar -->
   <div style="color: white;">
@@ -31,10 +31,14 @@
   </a>
   <div class="container">
   <body>
+  
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
     <%= yield %>
+
+
+    <%= javascript_include_tag 'application' %>
   </body>
   </div>
   

@@ -1,14 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 
-<strong><%= link_to 'My Songs', user_songs_path %></strong>
-<strong><%= link_to 'My favorite Songs', user_fav_songs_path %></strong>
-
-<% Catogrie.all.each do |catogry| %>
-  <%= link_to catogrie_path(catogry) do%> <%= catogry.name %> <%end%>
-<% end %>
-
-<h1>Songs</h1>
 
 <table>
   <thead>
@@ -30,7 +22,6 @@
   <tbody>
     <% @songs.each do |song| %>
       <tr>
-     
       <td>image</td>
       <td><%= song.artist %></td>
       <td><%= song.title %></td>
@@ -54,8 +45,7 @@
       <td><%= link_to 'Like', new_user_session_path %></td>  
       <% end %> 
       <td><%= link_to 'Show', song %></td>
->>>>>>> version 4
-
+      
       </tr>
     <% end %>
   </tbody>
@@ -63,4 +53,3 @@
 
 <br>
 
-<%= link_to 'New Song', new_song_path %>

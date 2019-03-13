@@ -1,19 +1,25 @@
 class SongsController < ApplicationController
-  before_action :authenticate_user!,except: [:index, :show]
+  before_action :authenticate_user!,except: [:index, :show, :catogrie_songs]
   before_action :set_song, only: [:show, :edit, :update, :destroy]
   before_action :check_user, only: [:edit, :update, :destroy]
 
   # GET /songs
   # GET /songs.json
   def index
-
-    if(params[:catogrie_id])
-      @songs = Song.where({catogrie_id: params[:catogrie_id]})
-    else 
-      @songs = Song.all
-    end 
+    @songs = Song.all
   end
 
+def catogrie_songs
+  @songs = Song.where({catogrie_id: params[:catogrie_id]})
+end
+
+def user_songs
+  @songs = Song.where({user_id: current_user.id})
+end
+
+def user_fav_songs
+  @songs = Song.where({user_id: current_user.id})
+end
   # GET /songs/1
   # GET /songs/1.json
   def show
