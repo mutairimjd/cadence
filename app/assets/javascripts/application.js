@@ -20,22 +20,6 @@
 
 // - Im Very sorry for that! -
 
-
-
-$('.first-button').on('click', function () {
-
-    $('.animated-icon1').toggleClass('open');
-});
-$('.second-button').on('click', function () {
-
-    $('.animated-icon2').toggleClass('open');
-});
-$('.third-button').on('click', function () {
-
-    $('.animated-icon3').toggleClass('open');
-});
-
-
 (function ($, window, document, undefined) {
     function Owl(element, options) { this.settings = null; this.options = $.extend({}, Owl.Defaults, options); this.$element = $(element); this._handlers = {}; this._plugins = {}; this._supress = {}; this._current = null; this._speed = null; this._coordinates = []; this._breakpoint = null; this._width = null; this._items = []; this._clones = []; this._mergers = []; this._widths = []; this._invalidated = {}; this._pipe = []; this._drag = { time: null, target: null, pointer: null, stage: { start: null, current: null }, direction: null }; this._states = { current: {}, tags: { 'initializing': ['busy'], 'animating': ['busy'], 'dragging': ['interacting'] } }; $.each(['onResize', 'onThrottledResize'], $.proxy(function (i, handler) { this._handlers[handler] = $.proxy(this[handler], this) }, this)); $.each(Owl.Plugins, $.proxy(function (key, plugin) { this._plugins[key.charAt(0).toLowerCase() + key.slice(1)] = new plugin(this) }, this)); $.each(Owl.Workers, $.proxy(function (priority, worker) { this._pipe.push({ 'filter': worker.filter, 'run': $.proxy(worker.run, this) }) }, this)); this.setup(); this.initialize() }
 

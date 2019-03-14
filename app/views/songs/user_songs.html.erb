@@ -1,60 +1,56 @@
 <p id="notice"><%= notice %></p>
 
 
-<h1>Songs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Img</th>
-      <th>Artist</th>
-      <th>Song Title</th>
-      <th>Song Catogries</th>
-      <th>Audio</th>
-      <th>Number of Comments</th>
-      <th>buttnCommint</th>
-      <th>Number of Likes</th>
-      <th>buttnLike</th>
-      <th>Show</th>
-      <th>Eidt</th>
-      <th>Delete</th>
+<div class="jumbotron majd">
+  
+      <h1>My Songs</h1>
       
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @songs.each do |song| %>
-      <tr>
-      <td>image</td>
-      <td><%= song.artist %></td>
-      <td><%= song.title %></td>
-      <td><%= Catogrie.find(song.catogrie_id).name %></td>
-      <td><audio controls src="<%=song.url %>"></audio></td>   
-      <td><%= Comment.where({song_id: song.id}).count%></td> 
-      <td><%= link_to 'Commint', song %></td>    
+          <% @songs.each do |song| %>
+            
+            <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li>
+            <table class="table table-borderless">
+             <tbody>
+      <tr> 
+      <td><img src="<%= image_path(song.image.url) %>" height="200" width="200"/></td>
+      <td>
+     <span style="font-size: 46px;"><%= song.artist %> - <%= song.title %></span>
+     <span style="font-size: 46px; color: gray;">(<%= Catogrie.find(song.catogrie_id).name %>)</span>
+      <br>
+      <br><p><audio controls src="<%=song.url %>"  style="width: 700px;"></audio>
+      <br>
+      <br>
+            <span style="font-size: 20px; color: gray; padding-left: 30px;"><%= Comment.where({song_id: song.id}).count%></span>
+      <span style="font-size: 20px; color: gray;"><%= link_to 'Commint', song %></span>
       <% if current_user %>
-      <td><%= Like.where({song_id: song.id}).count%></td>
-      <td> 
-       <% like = current_user.likes.where({song_id: song.id})[0]%>
-      <% if like %>
-        <% id = like.id %>
-        <%= link_to song_like_path(song,id),  method: :delete  do%> unlike <%end%>
-      <% else %>
-        <%= link_to song_likes_path(song),  method: :post  do%>Like <%end%>
-      <% end %> 
-      </td>
-      <% else %>
-      <td><%= Like.where({song_id: song.id}).count%></td>
-      <td><%= link_to 'Like', new_user_session_path %></td>  
-      <% end %> 
-      <td><%= link_to 'Show', song %></td>
-      <td><%= link_to 'Edit', edit_song_path(song) %></td>
-     <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>   
-      </tr>
-    <% end %>
+            <span style="font-size: 20px; color: gray;"><%= Like.where({song_id: song.id}).count%></span>
+            <span style="font-size: 20px; color: gray;">
+            <% like = current_user.likes.where({song_id: song.id})[0]%>
+            <% if like %>
+              <% id = like.id %>
+              <%= link_to song_like_path(song,id),  method: :delete  do%> unlike <%end%>
+            <% else %>
+              <%= link_to song_likes_path(song),  method: :post  do%> Like <%end%>
+            <% end %> 
+            </span>
+            <% else %>
+            <span style="font-size: 20px; color: gray;"><%= Like.where({song_id: song.id}).count%></span>
+            <span style="font-size: 20px; color: gray;"><%= link_to 'Like', new_user_session_path %></span>  
+        <% end %> 
+        <span style="font-size: 20px; color: gray;"><%= link_to 'Show', song %></span>
+        <span style="font-size: 20px; color: gray;"><%= link_to 'Edit', edit_song_path(song) %></span>
+        <span style="font-size: 20px; color: gray;"><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+     </td>
   </tbody>
 </table>
+            </li>
+            </ol>
+            </nav>
+          <% end %>
+      <br>
+      
+  </div>
 
 <br>
 

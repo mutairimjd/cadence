@@ -30,24 +30,30 @@
 
 <div class="jumbotron majd">
   
-      <strong><%= link_to 'My Songs', user_songs_path %></strong>
-      <strong><%= link_to 'My favorite Songs', user_fav_songs_path %></strong>
       <h1>Most Recent Uploaded Songs</h1>
+      <strong><%= link_to 'My Songs', user_songs_path %></strong>
       
           <% @songs.each do |song| %>
-
+            
             <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page" style="color: black;" >
-            
-            <span><%= song.artist %> - <%= song.title %></span>
-            <p><%= Catogrie.find(song.catogrie_id).name %></p>
-            <p><audio controls src="<%=song.url %>"></audio></p>   
-            <span><%= Comment.where({song_id: song.id}).count%></span> 
-            <span><%= link_to 'Commint', song %></span>  
-            <% if current_user %>
-            <span><%= Like.where({song_id: song.id}).count%></span>
-            <span> 
+            <li>
+            <table class="table table-borderless">
+             <tbody>
+      <tr> 
+      <td><img src="<%= image_path(song.image.url) %>" height="200" width="200"/></td>
+      <td>
+     <span style="font-size: 46px;"><%= song.artist %> - <%= song.title %></span>
+     <span style="font-size: 46px; color: gray;">(<%= Catogrie.find(song.catogrie_id).name %>)</span>
+      <br>
+      <br><p><audio controls src="<%=song.url %>"  style="width: 700px;"></audio>
+      <br>
+      <br>
+            <span style="font-size: 20px; color: gray; padding-left: 30px;"><%= Comment.where({song_id: song.id}).count%></span>
+      <span style="font-size: 20px; color: gray;"><%= link_to 'Commint', song %></span>
+      <% if current_user %>
+            <span style="font-size: 20px; color: gray;"><%= Like.where({song_id: song.id}).count%></span>
+            <span style="font-size: 20px; color: gray;">
             <% like = current_user.likes.where({song_id: song.id})[0]%>
             <% if like %>
               <% id = like.id %>
@@ -57,16 +63,19 @@
             <% end %> 
             </span>
             <% else %>
-            <span><%= Like.where({song_id: song.id}).count%></span>
-            <span><%= link_to 'Like', new_user_session_path %></span>  
-            <% end %> 
-            <span><%= link_to 'Show', song %></span>
+            <span style="font-size: 20px; color: gray;"><%= Like.where({song_id: song.id}).count%></span>
+            <span style="font-size: 20px; color: gray;"><%= link_to 'Like', new_user_session_path %></span>  
+        <% end %> 
+        <span style="font-size: 20px; color: gray;"><%= link_to 'Show', song %></span>
+     </td>
+  </tbody>
+</table>
             </li>
             </ol>
             </nav>
           <% end %>
       <br>
-      <%= link_to 'New Song', new_song_path %>
+      
   </div>
 
 
@@ -102,14 +111,3 @@
     });
         
     </script>
-
-
-
-
-
-
-
-
-
-
-

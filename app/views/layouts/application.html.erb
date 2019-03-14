@@ -12,48 +12,25 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     
   </head>
-  <body> 
+  <body>
 
-</a>
-<!--Navbar-->
-<nav class="navbar navbar-dark bg-dark darken-2">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-dark bg-dark">
 
-  <!-- Navbar brand -->
-  <a class="navbar-brand" href="#"></a>
+      <% if user_signed_in? %>
+        Welcome, <%= current_user.email %>
+        <%= link_to "logout", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <div class="login">
+          <%= link_to "Log in", new_user_session_path %>
+        </div> 
+        <%= link_to "Sign Up", new_user_registration_path %>
+      <% end %>
+    </nav>
 
-  <!-- Collapse button -->
-  <button class="navbar-toggler third-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent22"
-    aria-controls="navbarSupportedContent22" aria-expanded="false" aria-label="Toggle navigation">
-    <div class="animated-icon3"><span></span><span></span><span></span></div>
-  </button>
-
-  <!-- Collapsible content -->
-  <div class="collapse navbar-collapse" id="navbarSupportedContent22">
-
-    <!-- Links -->
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"></a>
-      </li>
-    </ul>
-    <!-- Links -->
-
-  </div>
-  <!-- Collapsible content -->
-
-</nav>
-<!--/.Navbar-->
-    
-<a href="http://localhost:3000/pages/home#">
+    <a href="http://localhost:3000/pages/home#">
       <img src="https://i.imgur.com/drrCDV2.png" width="225" class="logo">
-</a>
-
+    </a>
     <div class="container main-container">
  
       <p class="notice"><%= notice %></p>
@@ -63,7 +40,6 @@
      
     </div>
 
-  
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
