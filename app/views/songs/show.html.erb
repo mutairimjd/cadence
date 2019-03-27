@@ -1,34 +1,71 @@
-  
-  <div class="jumbotron majd">
-  
-  <p id="notice"><%= notice %></p>
-  <p>
-    <strong>Title:</strong>
-    <%= @song.title %>
-  </p>
 
-  <p>
-    <strong>Artist:</strong>
-    <%= @song.artist %>
-  </p>
+<div class="jumbotron majd">          
+    <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+    <li>
+    <div class="container">
+        <div class="row">
+            
+        <div class="col-xs-6">
+            <img src="<%= image_path(@song.image.url) %>" height="250" width="250"/>
+        </div>
+            
+        <div class="col-xs-6 songCont">
 
-  <p>
-    <strong>catogries:</strong>
-    <%= Catogrie.find(@song.catogrie_id).name %>
-  </p>
+            <div class="row">
+                  <p class="title"><%= @song.title %></p>
+            </div>
 
-<p>
-  <strong></strong>
-  <audio controls src="<%= @song.url %>"></audio>
-</p>
+            <div class="row artist">
+                  <div class="col-xs-6 songInfo">
+                  <p><%= @song.artist %> </p>
+                  </div>
+                  <div class="col-xs-6">
+                  <p class="catog">(<%= Catogrie.find(@song.catogrie_id).name %>)</p>
+                  </div>
+            </div>
+
+            <div class="row">
+                  <audio controls src="<%= @song.url %>"  style="width: 700px;"></audio>
+            </div>
+
+            <div class="row songSer">
+
+                  <div class="col-xs-4 comment">
+                      <span class="song"><%= Comment.where({song_id: @song.id}).count%></span>
+                      <span class="song"><%= link_to '', @song, :class => "fa fa-comment link" %></span>
+                  </div>
+      
+                  <div class="col-xs-4 like">
+                      <% if current_user %>
+                          <span class="song"><%= Like.where({song_id: @song.id}).count%></span>
+                          <span class="song">
+                          <% like = current_user.likes.where({song_id: @song.id})[0]%>
+                          <% if like %>
+                            <% id = like.id %>
+                            <%= link_to "", song_like_path(@song,id),  method: :delete, :class => "fa fa-heart" %>
+                          <% else %>
+                            <%= link_to "", song_likes_path(@song), method: :post, :class => "fa fa-heart" %>
+                          <% end %> 
+                          </span>
+                          <% else %>
+                          <span class="song"><%= Like.where({song_id: @song.id}).count%></span>
+                          <span class="song"><%= link_to "", new_user_session_path, :class => "fa fa-camera-retro" %></span> 
+                      <% end %> 
+                  </div>
+      
+                  <div class="col-xs-4 show">
+                        <span class="song"><%= link_to "", @song, :class => "fa fa-expand" %></span>
+                  </div>
+
+            </div>
+        </div>
 
 
 
-<p>
-  <strong></strong>
-  <image controls src="<%= @song.image.url %>"</image>
-</p>
- 
+    </div>
+
+<div class="commentContiner"> 
 
 <h2>Comments</h2>
 
@@ -36,6 +73,24 @@
 
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
+
+</div>
+    </li>
+    </ol>
+    </nav>
+      
+  </div>
+  
+  
+
+
+
+
+
+
+
+
+
 
 <%= link_to 'Edit', edit_song_path(@song) %> 
 <%= link_to 'Back', songs_path %>

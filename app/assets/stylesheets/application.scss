@@ -12,19 +12,20 @@
  *
  */
 
+ /*
+ *= require font-awesome
+ */
+ 
+ @import "font-awesome";
  @import "bootstrap";
 
  body {
     background: url("https://wallpapersite.com/images/wallpapers/grid-lines-3840x2160-blue-lines-dark-4k-8782.jpg");
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 	background-size: auto;
 	height: 100%;
 	margin: 0;
-	color: #fff
-
  }
-
-
 
 
   .footer,
@@ -38,13 +39,13 @@
 	// margin: 0 auto -50px;
  }
 
- .login {
-     margin-left: 1200px;
+ .navbar {
+	padding: 0 !important;	
+	background-color:rgba(0, 20, 60, 0.7)!important;
  }
 
- .logo {
-     position: absolute;
-     margin-top: -66px;
+ .navCon {
+	margin: 0 !important;
  }
 
  .form-control {
@@ -327,4 +328,61 @@ html {
 .majd {
 	background-color: transparent !important;
 	color: #fff;
+}
+
+
+.title {
+	color: #000;
+	font-size: 40px;
+}
+
+.comment, .like, .show{
+	margin: 10px;
+}
+
+.artist {
+	color: #000;
+	font-size: 20px;
+}
+
+.catog {
+	color: #000;
+	margin-left: 10px;
+}
+
+.songSer {
+	float: right;
+}
+
+.songControl {
+	float: right;
+	margin-top: 10px;
+	color: #2E2E2E;
+}
+
+.song {
+	color: #000;
+	font-size: 30px;
+}
+
+a {
+	color: #000;
+  }
+
+a:hover {
+	text-decoration: none;
+	color: red;
+  }
+
+.songCont{
+	margin-left: 50px;
+}
+
+.uplod {
+	float: right;
+}
+
+.commentContiner {
+	margin-top: 30px;
+	color: #000;
 }

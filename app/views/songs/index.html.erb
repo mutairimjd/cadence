@@ -1,3 +1,6 @@
+  
+  <p id="notice"><%= notice %></p>
+  
   <!-- Music Slider -->
   <section class="slider_sec">
     <div class="container-fluid fix-cont">
@@ -22,67 +25,95 @@
                 </div>
             </div>
           </div>
+          <div class="jumbotron majd">
+          <h3>Most Recent Uploaded Songs</h3>
+          </div>
       </div>
   </section>
 
     <!-- // slder sec -->
-    <p id="notice"><%= notice %></p>
+    
 
 <div class="jumbotron majd">
-  
-      <h1>Most Recent Uploaded Songs</h1>
-      <strong><%= link_to 'My Songs', user_songs_path %></strong>
-      
-          <% @songs.each do |song| %>
+        
+          <% @songs.each do |song| %> 
+          
+    <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+    <li>
+    <div class="container">
+        <div class="row">
             
-            <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-            <li>
-            <table class="table table-borderless">
-             <tbody>
-      <tr> 
-      <td><img src="<%= image_path(song.image.url) %>" height="200" width="200"/></td>
-      <td>
-     <span style="font-size: 46px;"><%= song.artist %> - <%= song.title %></span>
-     <span style="font-size: 46px; color: gray;">(<%= Catogrie.find(song.catogrie_id).name %>)</span>
-      <br>
-      <br><p><audio controls src="<%=song.url %>"  style="width: 700px;"></audio>
-      <br>
-      <br>
-            <span style="font-size: 20px; color: gray; padding-left: 30px;"><%= Comment.where({song_id: song.id}).count%></span>
-      <span style="font-size: 20px; color: gray;"><%= link_to 'Commint', song %></span>
-      <% if current_user %>
-            <span style="font-size: 20px; color: gray;"><%= Like.where({song_id: song.id}).count%></span>
-            <span style="font-size: 20px; color: gray;">
-            <% like = current_user.likes.where({song_id: song.id})[0]%>
-            <% if like %>
-              <% id = like.id %>
-              <%= link_to song_like_path(song,id),  method: :delete  do%> unlike <%end%>
-            <% else %>
-              <%= link_to song_likes_path(song),  method: :post  do%> Like <%end%>
-            <% end %> 
-            </span>
-            <% else %>
-            <span style="font-size: 20px; color: gray;"><%= Like.where({song_id: song.id}).count%></span>
-            <span style="font-size: 20px; color: gray;"><%= link_to 'Like', new_user_session_path %></span>  
-        <% end %> 
-        <span style="font-size: 20px; color: gray;"><%= link_to 'Show', song %></span>
-     </td>
-  </tbody>
-</table>
-            </li>
-            </ol>
-            </nav>
+        <div class="col-xs-6">
+            <img src="<%= image_path(song.image.url) %>" height="250" width="250"/>
+        </div>
+            
+        <div class="col-xs-6 songCont">
+
+            <div class="row">
+                  <p class="title"><%= song.title %></p>
+            </div>
+
+            <div class="row artist">
+                  <div class="col-xs-6 songInfo">
+                  <p><%= song.artist %> </p>
+                  </div>
+                  <div class="col-xs-6">
+                  <p class="catog">(<%= Catogrie.find(song.catogrie_id).name %>)</p>
+                  </div>
+            </div>
+
+            <div class="row">
+                  <audio controls src="<%=song.url %>"  style="width: 700px;"></audio>
+            </div>
+
+            <div class="row songSer">
+
+                  <div class="col-xs-4 comment">
+                      <span class="song"><%= Comment.where({song_id: song.id}).count%></span>
+                      <span class="song"><%= link_to '', song, :class => "fa fa-comment link" %></span>
+                  </div>
+      
+                  <div class="col-xs-4 like">
+                      <% if current_user %>
+                          <span class="song"><%= Like.where({song_id: song.id}).count%></span>
+                          <span class="song">
+                          <% like = current_user.likes.where({song_id: song.id})[0]%>
+                          <% if like %>
+                            <% id = like.id %>
+                            <%= link_to "", song_like_path(song,id),  method: :delete, :class => "fa fa-heart" %>
+                          <% else %>
+                            <%= link_to "", song_likes_path(song), method: :post, :class => "fa fa-heart" %>
+                          <% end %> 
+                          </span>
+                          <% else %>
+                          <span class="song"><%= Like.where({song_id: song.id}).count%></span>
+                          <span class="song"><%= link_to "", new_user_session_path, :class => "fa fa-heart" %></span> 
+                      <% end %> 
+                  </div>
+      
+                  <div class="col-xs-4 show">
+                        <span class="song"><%= link_to "", song, :class => "fa fa-expand" %></span>
+                  </div>
+
+            </div>
+
+        </div>
+
+        </div>
+    </div>
+    </li>
+    </ol>
+    </nav>
+           
           <% end %>
       <br>
       
   </div>
 
 
-
+     <%# //Jquery auto height    %>
     <script>
-      //Jquery auto height
-     
     $(document).ready(function(){
          $('#owl-carousel').owlCarousel({
             loop: true,
@@ -108,6 +139,5 @@
                 }
             }
         });
-    });
-        
+    });   
     </script>

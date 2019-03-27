@@ -1,55 +1,91 @@
 <p id="notice"><%= notice %></p>
 
+  <!-- Music Slider -->
+  <section class="slider_sec">
+    <div class="container-fluid fix-cont">
 
+ <h3><%= Catogrie.find(@songs.first.catogrie_id).name %> Songs</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Img</th>
-      <th>Artist</th>
-      <th>Song Title</th>
-      <th>Song Catogries</th>
-      <th>Audio</th>
-      <th>Number of Comments</th>
-      <th>buttnCommint</th>
-      <th>Number of Likes</th>
-      <th>buttnLike</th>
-      <th>Show</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="jumbotron majd">
 
-  <tbody>
-    <% @songs.each do |song| %>
-      <tr>
-      <td>image</td>
-      <td><%= song.artist %></td>
-      <td><%= song.title %></td>
-      <td><%= Catogrie.find(song.catogrie_id).name %></td>
-      <td><audio controls src="<%=song.url %>"></audio></td>   
-      <td><%= Comment.where({song_id: song.id}).count%></td> 
-      <td><%= link_to 'Commint', song %></td>    
-      <% if current_user %>
-      <td><%= Like.where({song_id: song.id}).count%></td>
-      <td> 
-       <% like = current_user.likes.where({song_id: song.id})[0]%>
-      <% if like %>
-        <% id = like.id %>
-        <%= link_to song_like_path(song,id),  method: :delete  do%> unlike <%end%>
-      <% else %>
-        <%= link_to song_likes_path(song),  method: :post  do%>Like <%end%>
-      <% end %> 
-      </td>
-      <% else %>
-      <td><%= Like.where({song_id: song.id}).count%></td>
-      <td><%= link_to 'Like', new_user_session_path %></td>  
-      <% end %> 
-      <td><%= link_to 'Show', song %></td>
+          <% @songs.each do |song| %> 
+          
+    <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+    <li>
+    <div class="container">
+
+        <div class="row">
+            
+        <div class="col-xs-6">
+            <img src="<%= image_path(song.image.url) %>" height="250" width="250"/>
+        </div>
+            
+        <div class="col-xs-6 songCont">
+
+            <div class="row">
+                  <p class="title"><%= song.title %></p>
+            </div>
+
+            <div class="row artist">
+                  <div class="col-xs-6 songInfo">
+                  <p><%= song.artist %> </p>
+                  </div>
+                  <div class="col-xs-6">
+                  <p class="catog">(<%= Catogrie.find(song.catogrie_id).name %>)</p>
+                  </div>
+            </div>
+
+            <div class="row">
+                  <audio controls src="<%=song.url %>"  style="width: 700px;"></audio>
+            </div>
+
+            <div class="row songSer">
+
+                  <div class="col-xs-4 comment">
+                      <span class="song"><%= Comment.where({song_id: song.id}).count%></span>
+                      <span class="song"><%= link_to '', song, :class => "fa fa-comment link" %></span>
+                  </div>
       
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                  <div class="col-xs-4 like">
+                      <% if current_user %>
+                          <span class="song"><%= Like.where({song_id: song.id}).count%></span>
+                          <span class="song">
+                          <% like = current_user.likes.where({song_id: song.id})[0]%>
+                          <% if like %>
+                            <% id = like.id %>
+                            <%= link_to "", song_like_path(song,id),  method: :delete, :class => "fa fa-heart" %>
+                          <% else %>
+                            <%= link_to "", song_likes_path(song), method: :post, :class => "fa fa-heart" %>
+                          <% end %> 
+                          </span>
+                          <% else %>
+                          <span class="song"><%= Like.where({song_id: song.id}).count%></span>
+                          <span class="song"><%= link_to "", new_user_session_path, :class => "fa fa-camera-retro" %></span> 
+                      <% end %> 
+                  </div>
+      
+                  <div class="col-xs-4 show">
+                        <span class="song"><%= link_to "", song, :class => "fa fa-expand" %></span>
+                  </div>
 
-<br>
+            </div>
 
+        </div>
+
+        </div>
+    </div>
+    </li>
+    </ol>
+    </nav>
+           
+          <% end %>
+      <br>
+      
+  </div>
+
+
+
+
+      </div>
+  </section>

@@ -11,6 +11,9 @@
     </div>
   <% end %>
 
+
+<div class="jumbotron">
+
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -27,7 +30,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :url %>
+    <%= form.label :Song %>
     <%= form.file_field :url %>
     <% if form.object.url? %>
     <%= audio_tag form.object.url %>
@@ -51,4 +54,7 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+
+
 <% end %>
+</div>
