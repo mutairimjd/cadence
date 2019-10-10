@@ -14,7 +14,7 @@ gem 'rails', '~> 5.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
-gem 'devise', '~> 4.6', '>= 4.6.1'
+gem 'devise', '>= 4.7.1'
 gem 'carrierwave', '~> 0.10.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+# gem 'mini_magick', '>= 4.9.4
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
