@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
-gem 'carrierwave', '~> 0.10.0'
+gem 'carrierwave', '~> 2.1.1'
 gem 'mini_magick', '~> 4.3'
 # Bootstrap
 gem 'bootstrap', '~> 4.3.1'
@@ -15,7 +15,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'devise', '>= 4.7.1'
-gem 'carrierwave', '~> 0.10.0'
+gem 'carrierwave', '~> 2.1.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'autoprefixer-rails'
